@@ -69,6 +69,7 @@ double serch_best_way(const vector<double> &x,const vector<double> &y){
  
     while(dummy_distance != INFINITY){
         distance = dummy_distance;
+        cout << next << endl;
         dummy_distance += serch_near_vertex(x,y,next,mp);
     }
     return distance;
@@ -79,7 +80,7 @@ int main(int argc, char const *argv[]){
     vector<double> y;
     double distance;
 
-	if(argc != 2){
+	if(argc != 2){         //ファイルの数調整
 		cout << "Please put one file!" << endl;
 		exit(-1);
 	}
