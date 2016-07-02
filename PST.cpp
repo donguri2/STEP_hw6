@@ -41,7 +41,7 @@ double calculate_distance(const double &x1,const double &y1,const double &x2,con
 }
 
 //点indexから近い点を探す
-double serch_near_vertex(const vector<double> &x,const vector<double> &y,int &next,map<int,bool> &mp){
+double search_near_vertex(const vector<double> &x,const vector<double> &y,int &next,map<int,bool> &mp){
     double ret=INFINITY;
     double distance;
     int index = next;
@@ -61,7 +61,7 @@ double serch_near_vertex(const vector<double> &x,const vector<double> &y,int &ne
     return ret;
 }
 
-double serch_best_way(const vector<double> &x,const vector<double> &y){
+double search_best_way(const vector<double> &x,const vector<double> &y){
     map<int,bool> mp;
     mp[0] = true;
     double distance = 0;
@@ -71,7 +71,7 @@ double serch_best_way(const vector<double> &x,const vector<double> &y){
     while(dummy_distance != INFINITY){
         distance = dummy_distance;
         cout << next << endl;
-        dummy_distance += serch_near_vertex(x,y,next,mp);
+        dummy_distance += search_near_vertex(x,y,next,mp);
     }
     distance += calculate_distance(x[next],y[next],x[0],y[0]);
     return distance;
@@ -88,7 +88,7 @@ int main(int argc, char const *argv[]){
 	}
 
 	read_file(argv[1],x,y);
-    distance = serch_best_way(x,y);
+    distance = search_best_way(x,y);
     cout << "distance:" << distance << endl;
 
 	return 0;
