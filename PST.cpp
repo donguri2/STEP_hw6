@@ -63,6 +63,7 @@ double serch_near_vertex(const vector<double> &x,const vector<double> &y,int &ne
 
 double serch_best_way(const vector<double> &x,const vector<double> &y){
     map<int,bool> mp;
+    mp[0] = true;
     double distance = 0;
     double dummy_distance = 0;
     int next = 0;
@@ -72,6 +73,7 @@ double serch_best_way(const vector<double> &x,const vector<double> &y){
         cout << next << endl;
         dummy_distance += serch_near_vertex(x,y,next,mp);
     }
+    distance += calculate_distance(x[next],y[next],x[0],y[0]);
     return distance;
 }
 
